@@ -152,6 +152,7 @@ def train_multi_task(param_file):
                         reg += task_reg
                     else:
                         reg = task_reg
+                    count += 1
             if count > 0:
                 reg = reg / count
                 loss_main += reg
