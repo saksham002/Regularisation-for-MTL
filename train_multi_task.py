@@ -106,16 +106,17 @@ def train_multi_task(param_file):
             images.requires_grad = True
 
             labels = {}
+            loss_data_main = {}
+            reg_loss_data = {}
+            loss_data_base = {}
             # Read all targets of all tasks
             for i, t in enumerate(all_tasks):
                 if t not in tasks:
                     continue
                 labels[t] = batch[i+1].to(device)
+                reg_loss_data[t] = 0
                 
             # Scaling the loss functions based on the algorithm choice
-            loss_data_main = {}
-            loss_data_base = {}
-            reg_loss_data = {}
             mask = None
             optimizer_main.zero_grad()
             optimizer_base.zero_grad()
