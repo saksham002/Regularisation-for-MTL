@@ -182,7 +182,7 @@ def train_multi_task(param_file):
             writer.add_scalar('training_loss_base', loss_base.data.item(), n_iter)
             for t in tasks:
                 writer.add_scalar('training_loss_main_{}'.format(t), loss_data_main[t], n_iter)
-                writer.add_scalar('training_reg_loss', reg_loss_data[t], n_iter)
+                writer.add_scalar('training_reg_loss_{}'.format(t), reg_loss_data[t], n_iter)
                 writer.add_scalar('training_loss_base_{}'.format(t), loss_data_base[t], n_iter)
             
 
