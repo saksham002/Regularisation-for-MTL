@@ -1,0 +1,11 @@
+{
+    "optimizer": "SGD", 
+    "batch_size": 256,
+    "lr": 5e-4,
+    "rw": 1e-4,
+    "norm_type": "spectral",
+    "C" : 30,
+    "dataset": "celeba",
+    "tasks": ["2", "19", "21", "31", "36"],
+    "parallel": false
+}
