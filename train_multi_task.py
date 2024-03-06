@@ -162,7 +162,7 @@ def train_multi_task(param_file):
                     mean_pos = torch.mean(rep_base[mask_pos], axis=0, keepdim=True)
                     mean_neg = torch.mean(rep_base[mask_neg], axis=0, keepdim=True)
                     num = num_pos + num_neg
-                    #task_reg = (num_pos * torch.linalg.matrix_norm(torch.cov(torch.transpose(rep_main[mask_pos] - mean_pos, 0, 1)), ord=ord) + num_neg * torch.linalg.matrix_norm(torch.cov(torch.transpose(rep_main[mask_neg] - mean_neg, 0, 1)), ord=ord)) / num
+                    #task_reg = (num_pos * torch.linalg.matrix_norm(torch.cov(torch.transpose(rep_base[mask_pos] - mean_pos, 0, 1)), ord=ord) + num_neg * torch.linalg.matrix_norm(torch.cov(torch.transpose(rep_base[mask_neg] - mean_neg, 0, 1)), ord=ord)) / num
                     task_reg = (num_pos * torch.sum(torch.square(rep_base[mask_pos] - mean_pos)) / (num_pos - 1) + num_neg * torch.sum(torch.square(rep_base[mask_neg] - mean_neg)) / (num_neg - 1)) / num
                     task_reg = task_reg / torch.square(torch.linalg.vector_norm(mean_pos - mean_neg, ord=2))
                     #task_reg = torch.reshape(task_reg, (1, 1))
