@@ -72,6 +72,7 @@ def visualise_samples(images, labels, model_base, model_main):
                     prob_base_image_t = F.sigmoid(out_base_image_t)
                     prob_main_image_t = F.sigmoid(out_main_image_t)
                     print("Probabilities:", prob_base_image_t, prob_main_image_t)
+                    
 def train_multi_task(param_file):
     with open('configs.json') as config_params:
         configs = json.load(config_params)
