@@ -267,14 +267,14 @@ def train_multi_task(param_file):
                     tot_loss_main[t] += loss_t_main.item() / task_num
                     metric_base[t].update(out_t_base_val, labels_val[t])
                     metric_main[t].update(out_t_main_val, labels_val[t])
-            probs_base_covariance = get_covariance_matrix(probs_base)
-            reg_base = rw * torch.linalg.matrix_norm(probs_base_covariance - labels_covariance, 2)
-            reg_loss_base['all'] += reg_base.item()
-            probs_main_covariance = get_covariance_matrix(probs_main)
-            reg_main = rw * torch.linalg.matrix_norm(probs_main_covariance - labels_covariance, 2)
-            tot_loss_main['all'] += reg_main.item()
-            reg_loss_main['all'] += reg_main.item()
-            num_val_batches+=1
+                probs_base_covariance = get_covariance_matrix(probs_base)
+                reg_base = rw * torch.linalg.matrix_norm(probs_base_covariance - labels_covariance, 2)
+                reg_loss_base['all'] += reg_base.item()
+                probs_main_covariance = get_covariance_matrix(probs_main)
+                reg_main = rw * torch.linalg.matrix_norm(probs_main_covariance - labels_covariance, 2)
+                tot_loss_main['all'] += reg_main.item()
+                reg_loss_main['all'] += reg_main.item()
+                num_val_batches+=1
         mean_base_val_acc = 0.0
         mean_main_val_acc = 0.0
         for t in tasks:
