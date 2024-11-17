@@ -14,3 +14,7 @@ To train a model, use the command:
 ```bash
 python multi_task/train_multi_task.py --param_file=./params_celeba.json
 ```
+
+# Acknowledgements
+
+Portions of this project are derived from [MultiObjectiveOptimization](https://github.com/isl-org/MultiObjectiveOptimization/tree/master) © 2018 Ozan Sener under the MIT License.
